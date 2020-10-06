@@ -8,6 +8,7 @@ RUN apt-get --yes install espeak alsa-utils openscad git stgit
 RUN apt-get --yes install gstreamer1.0-pocketsphinx libpocketsphinx-dev libpocketsphinx3 pocketsphinx pocketsphinx-en-us python3-pocketsphinx
 RUN apt-get --yes install wget
 RUN apt-get --yes install sudo
+RUN apt-get --yes install vim-tiny
 RUN export uid=1000 gid=100 && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
