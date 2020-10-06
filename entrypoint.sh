@@ -1,12 +1,16 @@
 #!/bin/bash
 set -euxo pipefail
+
+CONCOURSE_REPO="space-nerds-in-space-repo"
+
 function build_snis {
-	if [ ! -d "space-nerds-in-space" ]
-	then
-		git clone https://github.com/smcameron/space-nerds-in-space.git
+	if [ ! -d "CONCOURSE_REPO" ]
+		>&2 echo "[ERROR] No ${CONCOURSE_REPO} repo found"
+		    echo "[DEBUG] pwd: $(pwd)"
+			exit 1
 	fi
 
-	cd space-nerds-in-space
+	cd "${CONCOURSE_REPO}"
 	make clean
 	make
 	make update-assets
