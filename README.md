@@ -1,4 +1,5 @@
 # snis-builder
+![CI](https://concourse-ci.17xf.de/api/v1/teams/main/pipelines/snis-builder-public/badge)
 
 TL;DR: Build SNIS with a container.
 
