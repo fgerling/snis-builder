@@ -2,7 +2,19 @@ FROM ubuntu
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get --yes update
-RUN apt-get --yes install build-essential portaudio19-dev libbsd-dev libpng-dev libvorbis-dev libsdl2-dev libsdl2-2.0-0 liblua5.2-dev libglew1.5-dev libssl-dev libttspico-utils sox libsdl2-image-dev
+RUN apt-get --yes install build-essential
+RUN apt-get --yes install portaudio19-dev
+RUN apt-get --yes install libbsd-dev
+RUN apt-get --yes install libpng-dev
+RUN apt-get --yes install libvorbis-dev
+RUN apt-get --yes install libsdl2-dev
+RUN apt-get --yes install libsdl2-2.0-0
+RUN apt-get --yes install liblua5.2-dev
+RUN apt-get --yes install libglew1.5-dev
+RUN apt-get --yes install libssl-dev
+RUN apt-get --yes install libttspico-utils
+RUN apt-get --yes install sox
+RUN apt-get --yes install libsdl2-image-dev
 RUN apt-get --yes install espeak alsa-utils openscad git stgit
 #RUN ap-gett --yes install pocketsphinx-utils pocketsphinx-lm-en-hub4 libpocketsphinx1
 RUN apt-get --yes install gstreamer1.0-pocketsphinx libpocketsphinx-dev libpocketsphinx3 pocketsphinx pocketsphinx-en-us python3-pocketsphinx
