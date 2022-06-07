@@ -10,7 +10,7 @@ RUN apt-get --yes install libvorbis-dev
 RUN apt-get --yes install libsdl2-dev
 RUN apt-get --yes install libsdl2-2.0-0
 RUN apt-get --yes install liblua5.2-dev
-#RUN apt-get --yes install libglew1.5-dev
+RUN apt-get --yes install libglew-dev
 RUN apt-get --yes install libssl-dev
 RUN apt-get --yes install libttspico-utils
 RUN apt-get --yes install sox
