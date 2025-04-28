@@ -1,0 +1,34 @@
+steps:
+  - name: clone-space-nerds
+    image: alpine/git
+    commands:
+      - git clone https://github.com/smcameron/space-nerds-in-space.git
+
+  - name: build-snisbuilder-image
+    image: docker:dind
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t fgerling/snisbuilder:latest .
+
+  - name: test-build-snis
+    image: fgerling/snisbuilder:latest
+    commands:
+      - cd space-nerds-in-space
+      - ./build.sh
+
+  - name: push-snisbuilder-image
+    image: docker:dind
+    privileged: true
+    environment:
+      DOCKER_USERNAME:
+        from_secret: DOCKER_USERNAME
+      DOCKER_PASSWORD:
+        from_secret: DOCKER_PASSWORD
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - echo "$$DOCKER_PASSWORD" | docker login -u "$$DOCKER_USERNAME" --password-stdin
+      - docker push fgerling/snisbuilder:latest
+
